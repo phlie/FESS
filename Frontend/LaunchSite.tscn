@@ -11,7 +11,7 @@ roughness = 0.85
 normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 3 )
-uv1_scale = Vector3( 1000, 1000, 1000 )
+uv1_scale = Vector3( 10000, 10000, 10000 )
 
 [node name="SceneRoot" type="Spatial"]
 script = ExtResource( 1 )
@@ -24,34 +24,32 @@ depth = 1e+06
 material = SubResource( 1 )
 
 [node name="GroundCam" type="Camera" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 1, 100 )
+transform = Transform( 1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 1, 10 )
 fov = 85.9
 far = 1e+06
 
 [node name="EarthAlpha" type="CSGCombiner" parent="."]
 
 [node name="NoseCone" type="CSGCylinder" parent="EarthAlpha"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125, 0 )
-radius = 10.0
-height = 50.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
+height = 2.0
 sides = 50
 cone = true
 material = ExtResource( 4 )
 
 [node name="Rocket" type="CSGCylinder" parent="EarthAlpha"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0 )
-radius = 10.0
-height = 100.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+height = 10.0
 sides = 50
 material = ExtResource( 4 )
 
 [node name="FollowCam" type="Camera" parent="EarthAlpha"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 190, -15 )
+transform = Transform( 1, 0, 0, 0, -0.173648, 0.984808, 0, -0.984808, -0.173648, 0, 15, -2 )
 fov = 80.7
 far = 1e+06
 
 [node name="BaseCam" type="Camera" parent="EarthAlpha"]
-transform = Transform( 1, 0, 0, 0, 0.173648, -0.984808, 0, 0.984808, 0.173648, 0, 1, 15 )
+transform = Transform( 1, 0, 0, 0, 0.173648, -0.984808, 0, 0.984808, 0.173648, 0, 0, 1.25 )
 current = true
 fov = 85.9
 far = 1e+06

@@ -21,7 +21,7 @@ config/icon="res://icon.png"
 
 [debug]
 
-settings/fps/force_fps=15
+settings/fps/force_fps=30
 
 [rendering]
 
