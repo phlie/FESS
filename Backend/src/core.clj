@@ -15,18 +15,19 @@
   []
   (def t 0)                             ; 1 Frame, currently set to 15 frames a second
   (def a -9.81)                         ; Meters per second per second
-  (def vx 20.0)                         ; The various velocities
+  (def vx 0.0)                         ; The various velocities
   (def vy 10.0)                         ; Meters per second
-  (def vz -5.0)
+  (def vz 0.0)
   (def px [])                            ; The various positions
   (def py [])                      ; X Y Z, with Y being straight up
   (def pz [])
   (def x 0)                             ; The current position in all the axeses
   (def y 0)
   (def z 0)
-  (def rx 0)                            ; The current rotation in the 3 dimensions
-  (def ry 0)
-  (def rz 0))
+  (def rx [])                            ; The current rotation in the 3 dimensions
+  (def ry 0.0)
+  (def rz 0.0)
+  (def rot-x 0.0))
 
 ;; Computes the velocity at every frame of the rocket
 ;; then in the front end times by a frame delta
@@ -43,18 +44,25 @@
   (def px [])                           ; Initialize all the arrays to empty
   (def py [])
   (def pz [])
+  (def rx [])
   (dotimes [n frames-sent]              ; Loop through the amount of data to send
     (def vy (+ vy (* a (/ 1 frames-per-second)))) ; Calculate the velocity
     (def x (+ x (* vx (/ 1 frames-per-second))))  ; Calculate the new position
     (def y (+ y (* vy (/ 1 frames-per-second))))
     (def z (+ z (* vz (/ 1 frames-per-second))))
     ;; (println "Position: " py "Velocity: " v)
+    (when (< vy 0.0)
+      (def rot-x (min Math/PI (+ rot-x 0.05))))
+    (println "Position-y" y)
     (def px (conj px x))                ; Append the array with the newest value
     (def py (conj py y))
     (def pz (conj pz z))
+    (def rx (conj rx rot-x))
     ;; (println y)
     ;; (println py)     ; Used for debugging
-    (def t (inc t)))                    ; Increment the time by 1
+    (def t (inc t)))    ; Increment the time by 1
+  (println "Velocity: " vy "Position-Y: " y)
+  (println rx)
   {:px px :py py :pz pz                 ; Send all the information the Frontend expects
    :rx rx :ry ry :rz rz})
 

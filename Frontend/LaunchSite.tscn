@@ -24,7 +24,7 @@ depth = 1e+06
 material = SubResource( 1 )
 
 [node name="GroundCam" type="Camera" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 1, 10 )
+transform = Transform( 1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 1, 100 )
 fov = 85.9
 far = 1e+06
 
